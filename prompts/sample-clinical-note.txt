@@ -1,0 +1,52 @@
+OCCUPATIONAL MEDICINE — INITIAL VISIT
+
+PATIENT: [redacted]
+DATE OF INJURY: 2026-04-14
+DATE OF VISIT: 2026-04-15
+
+CHIEF COMPLAINT:
+Left wrist pain after fall from bicycle while commuting to work, 2026-04-14.
+
+HISTORY OF PRESENT ILLNESS:
+42-year-old warehouse worker, right-hand dominant, presents with left wrist pain
+after falling onto outstretched left hand while riding bicycle to work. Reports
+immediate onset of pain, swelling, and limited motion. Denies LOC, head injury,
+or other musculoskeletal complaints. Patient states he has been unable to grip
+or lift objects since the injury.
+
+PAST MEDICAL HISTORY:
+Hypertension, well-controlled on lisinopril. No prior wrist injuries.
+
+EXAMINATION:
+Vital signs WNL. Left wrist: focal tenderness over the distal radius with
+moderate soft-tissue swelling, no overlying abrasion. ROM limited in all planes
+secondary to pain. Distal neurovascular exam intact — capillary refill <2s,
+sensation intact in median/ulnar/radial distributions, strong radial pulse.
+No deformity grossly visible.
+
+IMAGING:
+Left wrist 3-view radiograph obtained in-office. Nondisplaced transverse
+fracture of the distal radial metaphysis. No intra-articular extension.
+No ulnar involvement.
+
+ASSESSMENT:
+1. Left nondisplaced distal radius fracture, work-related injury.
+2. Work-related injury requiring modified duty.
+
+PLAN:
+1. Short-arm fiberglass cast applied in fracture management position.
+   Cast integrity verified, no tightness, neurovascular re-check normal.
+2. Ibuprofen 600mg PO q6h PRN pain.
+3. Elevation, ice, gentle finger ROM.
+4. Return to clinic in 2 weeks for cast check and repeat imaging.
+5. Modified duty — no lifting >5 lbs with left upper extremity, no operating
+   heavy equipment. Full duty on right upper extremity permitted.
+6. Patient education on cast care provided.
+
+PROCEDURES PERFORMED:
+- Radiographic interpretation in-office
+- Short-arm cast application, non-manipulative closed treatment
+
+FOLLOW UP: 2 weeks.
+
+Signed: [redacted], DO

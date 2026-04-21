@@ -1,0 +1,102 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rocket-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: rocket_coding
+      DB_USERNAME: rocket
+      DB_PASSWORD: secret
+      QUEUE_CONNECTION: redis
+      REDIS_HOST: redis
+    networks:
+      - rocket
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: rocket-nginx
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - rocket
+
+  mysql:
+    image: mysql:8.0
+    container_name: rocket-mysql
+    environment:
+      MYSQL_DATABASE: rocket_coding
+      MYSQL_USER: rocket
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: rootsecret
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "rocket", "-psecret"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "3307:3306"
+    networks:
+      - rocket
+
+  redis:
+    image: redis:7-alpine
+    container_name: rocket-redis
+    ports:
+      - "6380:6379"
+    networks:
+      - rocket
+
+  queue-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rocket-queue-worker
+    depends_on:
+      - app
+      - redis
+      - mysql
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_DATABASE: rocket_coding
+      DB_USERNAME: rocket
+      DB_PASSWORD: secret
+      QUEUE_CONNECTION: redis
+      REDIS_HOST: redis
+    command: >
+      php artisan queue:work redis
+      --queue=llm,default
+      --tries=2
+      --backoff=10
+      --max-time=3600
+      --sleep=1
+    networks:
+      - rocket
+
+volumes:
+  mysql-data:
+
+networks:
+  rocket:
+    driver: bridge
