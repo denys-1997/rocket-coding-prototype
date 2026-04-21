@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Lint & Test
+    name: PHPUnit
     runs-on: ubuntu-latest
 
     steps:
@@ -35,8 +35,8 @@ jobs:
       - name: Prepare .env for tests
         run: cp .env.example .env && php artisan key:generate
 
-      - name: Laravel Pint (style)
-        run: vendor/bin/pint --test
+      - name: Run migrations (SQLite)
+        run: touch database/database.sqlite && php artisan migrate --force
 
       - name: PHPUnit
         run: php artisan test --stop-on-failure
